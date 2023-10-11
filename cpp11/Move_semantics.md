@@ -5,6 +5,7 @@ The first benefit of move semantics is performance optimization.
 When an object is about to reach the end of its lifetime, either because it's a temporary or by explicitly calling std::move, a move is often a cheaper way to transfer resources. For example, moving a std::vector is just copying some pointers and internal state over to the new vector -- copying would involve having to copy every single contained element in the vector, which is expensive and unnecessary if the old vector will soon be destroyed.
 
 Example:
+```
 #include <string>
 #include <iostream>
 
@@ -23,14 +24,18 @@ int main() {
     std::cout << "s after move:" << s << std::endl;
     return 0;
 }
+```
 
 Output:
+```
 Data in constructor:Hello move!
 s after move:
+```
 
 Moves also make it possible for non-copyable types such as std::unique_ptr s (smart pointers) to guarantee at the language level that there is only ever one instance of a resource being managed at a time, while being able to transfer an instance between scopes.
 
 Example:
+```
 #include <string>
 #include <iostream>
 #include <memory>
@@ -69,9 +74,10 @@ int main() {
 
     return 0;
 }
+```
 Output:
+```
 MyClass constructor. Value: 42
 Data: 42
 MyClass destructor. Value: 42
-
-
+```
