@@ -25,22 +25,28 @@ constexpr const int& y = x; // error -- constexpr variable `y` must be initializ
 ```
 
 In C++, constexpr is a keyword that is used to indicate that a particular expression, function, or variable can be evaluated or computed at compile-time rather than at runtime. It is primarily used for compile-time evaluation of constants and for optimization purposes. Here are the key uses of constexpr:
+
 1 Compile-Time Constants: You can use constexpr to define constants at compile time. For example:
+```
 constexpr int myConstant = 42;
+```
 In this case, myConstant is known at compile time and can be used in situations where a constant value is required.
 
 2 Compile-Time Function Evaluation: You can use constexpr to declare functions that can be evaluated at compile time. This is especially useful for complex computations that can be done at compile time to improve performance. For example:
+```
 constexpr int square(int x) {
     return x * x;
 }
+```
 When you call square with a constant expression as an argument, the result will be computed at compile time.
 
 3 Constexpr Variables: In C++11 and later, you can use constexpr to declare variables, indicating that their value is known at compile time. This is useful for values that do not change during program execution and are computed at compile time. 
-
+```
 constexpr int arraySize = 10;
 int myArray[arraySize]; // This creates an array with a size known at compile time.
-
+```
 4 Constexpr Constructors: You can use constexpr with constructor functions to create objects with known compile-time values.
+```
 class MyObject {
 public:
     constexpr MyObject(int x) : value(x) {}
@@ -48,10 +54,8 @@ public:
 private:
     int value;
 };
-
 constexpr MyObject obj(42);
-O[O
-
+```
 
 Constant expressions with classes:
 ```
