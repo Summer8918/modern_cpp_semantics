@@ -9,7 +9,7 @@ Universal Reference (T&&): To enable perfect forwarding, you typically use unive
 std::forward: The std::forward function template is used to forward the arguments to another function or constructor. It is often used in the implementation of functions or classes that want to achieve perfect forwarding. std::forward ensures that the argument is forwarded as either an lvalue or an rvalue based on the original argument's value category.
 
 Example:
-'''
+```
 template <typename T>
 void my_forwarding_function(T&& arg) {
     some_other_function(std::forward<T>(arg));
@@ -20,10 +20,10 @@ int main() {
     my_forwarding_function(x);  // Argument 'x' is an lvalue, forwarded as an lvalue.
     my_forwarding_function(10); // Argument '10' is an rvalue, forwarded as an rvalue.
 }
-'''
+```
 
 auto type deduction with lvalues and rvalues:
-'''
+```
 int x = 0; // `x` is an lvalue of type `int`
 int& xl = x; // `xl` is an lvalue of type `int&`
 int&& xr = x; // compiler error -- `x` is an lvalue
@@ -31,7 +31,7 @@ int&& xr2 = 0; // `xr2` is an lvalue of type `int&&`
 auto& al = x; // `al` is an lvalue of type `int&`
 auto&& al2 = x; // `al2` is an lvalue of type `int&`
 auto&& ar = 0; // `ar` is an lvalue of type `int&&`
-'''
+```
 
 Move is used to transfer resources from one object to another.
 It is enabled by using rvalue references to distinguish bewteen moveable resources and non-moveable resources.
